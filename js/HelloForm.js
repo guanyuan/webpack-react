@@ -1,42 +1,30 @@
 import React, { Component } from 'react'
-import { Dropdown, Grid, Header } from 'stardust'
+import Select from 'react-select';
 
-const options = [
-	{ text: 'English', value: 'English' },
-	{ text: 'French', value: 'French' },
-	{ text: 'Spanish', value: 'Spanish' },
-	{ text: 'German', value: 'German' },
-	{ text: 'Chinese', value: 'Chinese' },
-]
+// Be sure to include styles at some point, probably during your bootstrapping
+import 'react-select/dist/react-select.css';
+var options = [
+	{ value: 'one', label: 'One' },
+	{ value: 'two', label: 'Two' }
+];
+
 
 class DropdownSelectionExample extends Component {
-	constructor() {
-		super()
-		this.state = { optionsSingle: options, optionsMultiple: options }
-	}
 
-	handleChangeSingle (e, value) {
-		this.setState({ currentValue: value })
-	}
-
+	logChange (val) {
+		console.log(val);
+}
 	render() {
-		const { currentValue, currentValues } = this.state
-
 		return (
-				<Grid>
-					<Grid.Column width={8}>
-						<Header>Single Option</Header>
-						<pre>Current value: {currentValue}</pre>
-						<Dropdown
-								options={this.state.optionsSingle}
-								placeholder='请选择产品'
-								search
-								selection
-								fluid
-								onChange={this.handleChangeSingle.bind(this)}
-						/>
-					</Grid.Column>
-				</Grid>
+				<div>
+					<Select
+							name="form-field-name"
+							value="one"
+							options={options}
+							onChange={this.logChange}
+					/>
+				</div>
+
 		)
 	}
 }

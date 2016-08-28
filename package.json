@@ -40,10 +40,8 @@
   "dependencies": {
     "babel-core": "^5.3.3",
     "babel-loader": "^5.0.0",
-    "faker": "^3.1.0",
-    "lodash": "^4.15.0",
     "react": "^15.3.1",
     "react-dom": "^15.3.1",
-    "stardust": "^0.37.3"
+    "react-select": "^1.0.0-beta14"
   }
 }
