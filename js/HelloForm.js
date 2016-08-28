@@ -16,14 +16,15 @@ class DropdownSelectionExample extends Component {
 }
 	render() {
 		return (
-				<div>
-					<Select
-							name="form-field-name"
-							value="one"
-							options={options}
-							onChange={this.logChange}
-					/>
-				</div>
+				<Select
+						name="form-field-name"
+						value="one"
+						options={options}
+						autofocus={true}
+						searchable={true}
+						openOnFocus={true}
+						onChange={this.logChange}
+				/>
 
 		)
 	}
