@@ -1,24 +1,44 @@
-require('../sass/HelloForm.scss');
+import React, { Component } from 'react'
+import { Dropdown, Grid, Header } from 'stardust'
 
-var HelloSayer = require('./HelloSayer');
-var React = require('react');
+const options = [
+	{ text: 'English', value: 'English' },
+	{ text: 'French', value: 'French' },
+	{ text: 'Spanish', value: 'Spanish' },
+	{ text: 'German', value: 'German' },
+	{ text: 'Chinese', value: 'Chinese' },
+]
 
-class HelloForm extends React.Component {
-	constructor(props) {
-		super(props);
-		this.state = { name: 'world' };
+class DropdownSelectionExample extends Component {
+	constructor() {
+		super()
+		this.state = { optionsSingle: options, optionsMultiple: options }
+	}
+
+	handleChangeSingle (e, value) {
+		this.setState({ currentValue: value })
 	}
 
 	render() {
-		return (<div className="hello-form">
-			<input type="text" onChange={this.onChange.bind(this)} />
-			<HelloSayer name={this.state.name} />
-		</div>);
-	}
+		const { currentValue, currentValues } = this.state
 
-	onChange(e) {
-		this.setState({ name: e.target.value });
+		return (
+				<Grid>
+					<Grid.Column width={8}>
+						<Header>Single Option</Header>
+						<pre>Current value: {currentValue}</pre>
+						<Dropdown
+								options={this.state.optionsSingle}
+								placeholder='请选择产品'
+								search
+								selection
+								fluid
+								onChange={this.handleChangeSingle.bind(this)}
+						/>
+					</Grid.Column>
+				</Grid>
+		)
 	}
 }
 
-export default HelloForm;
+export default DropdownSelectionExample
